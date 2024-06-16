@@ -22,3 +22,7 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
         show_sql: true
+
+jwt:
+  expiration-time: 86400000
+  secret-key: 9cwJq2xq1r1LUnyLVLPRnMFi48mJ6bbBa58gWa9gWrQ=

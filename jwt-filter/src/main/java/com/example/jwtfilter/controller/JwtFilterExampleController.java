@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.jwtfilter.domain.dto.MemberDto;
+import com.example.jwtfilter.domain.dto.MemberLoginDto;
+import com.example.jwtfilter.response.JwtFilterExampleAccessTokenResponse;
 import com.example.jwtfilter.response.JwtFilterExampleResponse;
 import com.example.jwtfilter.service.JwtFilterExampleService;
 
@@ -23,5 +25,10 @@ public class JwtFilterExampleController {
 	@PostMapping(value = "/signup")
 	public ResponseEntity<JwtFilterExampleResponse> signup(@RequestBody MemberDto memberDto) {
 		return new ResponseEntity<>(jwtFilterExampleService.signup(memberDto), HttpStatus.CREATED);
+	}
+
+	@PostMapping(value = "/login")
+	public ResponseEntity<JwtFilterExampleAccessTokenResponse> login(@RequestBody MemberLoginDto loginDto) {
+		return new ResponseEntity<>(jwtFilterExampleService.login(loginDto), HttpStatus.OK);
 	}
 }

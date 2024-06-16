@@ -26,7 +26,7 @@ public class SecurityConfig implements WebMvcConfigurer {
 			.authorizeHttpRequests(httpRequest -> {
 				httpRequest
 					.requestMatchers(PathRequest.toH2Console()).permitAll()
-					.requestMatchers("/jwt-filter/signup").permitAll()
+					.requestMatchers("/jwt-filter/signup", "/jwt-filter/login").permitAll()
 					.anyRequest().authenticated();
 			});
 
