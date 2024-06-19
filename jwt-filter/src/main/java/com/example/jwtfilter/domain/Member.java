@@ -1,6 +1,8 @@
 package com.example.jwtfilter.domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +37,10 @@ public class Member implements UserDetails {
 
 	@Column(name = "member_age")
 	private int memberAge;
+
+	@OneToMany(mappedBy = "member")
+	@Builder.Default
+	private List<FavoriteFood> favoriteFoodList = new ArrayList<>();
 
 	@Override
 	public boolean isAccountNonExpired() {
